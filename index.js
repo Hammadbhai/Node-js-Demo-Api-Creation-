@@ -5,10 +5,11 @@ const mongoose = require('mongoose');
 const {MongoClient} = require('mongodb');
 const app = express();
 const bcrypt = require('bcryptjs');
-const port = 3203;
+const port = 8080;
 let authmodel = require('./model/User_model');
 const { response } = require('express');
 let todomodel = require('./model/TodoModel');
+
 
 
 app.use(cors());
@@ -22,8 +23,8 @@ mongoose.connect(db).then(()=>{
 }).catch((err)=> console.log("Db is not connected ")
 );
 
-app.get('/',(req,res)=>{
-        res.send("Hello world this is hammad");
+app.get('/name',(req,res)=>{
+        console.log("Hello world this is hammad");
 } );
 
 // app.post('/signup',async(req,res)=>{
@@ -78,6 +79,6 @@ app.get('/',(req,res)=>{
 //           res.status(400).send({result:err.message,message:"todo is not added"})
 // })
 //     })
-app.listen(port,()=>{
-    console.log("Server is running")
+app.listen(port,"localhost",()=>{
+    console.log("Server is running"+port)
 });
